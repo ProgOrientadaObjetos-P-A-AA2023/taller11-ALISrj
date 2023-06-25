@@ -1,37 +1,52 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package paquete01;
 
-/**
- *
- * @author reroes
- */
+import java.util.ArrayList;
+import paquete02.*;
+
 public class Ejecutor01 {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+
+        ArrayList<Menu> carta = new ArrayList();
+
+        Menu menu1 = new MenuNinos("Niños 01", 2, 1, 1.5);
+        Menu menu2 = new MenuNinos("Niños 02", 3, 1, 1.5);
+        Menu menu3 = new MenuEconomico("Econo 001", 4, 25);
+        Menu menu4 = new MenuDia("Dia 001", 5, 1, 1);
+        Menu menu5 = new MenuCarta("Carta 001", 6, 1.5, 2, 10);
+        
+        carta.add(menu1);
+        carta.add(menu2);
+        carta.add(menu3);
+        carta.add(menu4);
+        carta.add(menu5);
+
+        for (int i = 0; i < carta.size(); i++) {
+            carta.get(i).establecerValorMenu();
+            System.out.printf("%.2f\n",
+                    carta.get(i).obtenerValorMenu());
+        }
+
+        Cuenta miCuenta = new Cuenta("René Elizalde", 10, carta);
+        miCuenta.establecerSubtotal();
+        miCuenta.establecerValorCancelar();
+        System.out.printf("%s\n", miCuenta);
+
     }
-    
-    
+
 }
 // lo que debe presentar
 /*
 Factura
 Cliente: René Elizalde
-Menu del Día:
+Menu de Niños:
 	Plato: Niños 01
 	Valor Inicial: 2,00
 	Valor helado: 1,00
 	Valor pastel: 1,50
 	Valor del Menú: 4,50
 
-Menu del Día:
+Menu de Niños:
 	Plato: Niños 02
 	Valor Inicial: 3,00
 	Valor helado: 1,00
